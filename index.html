@@ -8,15 +8,31 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#05070f;--bg2:#090d1c;--bg3:#0e1225;--bg4:#131830;--accent:#4c7fff;--accent2:#a855f7;--green:#22d3a0;--text:#dde3ff;--muted:#4a5280;--border:rgba(255,255,255,.06)}
+:root{
+  --bg:#06101e;
+  --bg2:#0a1628;
+  --bg3:#0f1f38;
+  --bg4:#162848;
+  --accent:#1e6fff;
+  --accent2:#4d9fff;
+  --green:#22d3a0;
+  --text:#e8f0ff;
+  --muted:#4a6080;
+  --border:rgba(30,111,255,.12);
+  --circuit:#1a3a6a;
+}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden;line-height:1.6}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.4;background-image:
+  linear-gradient(rgba(30,111,255,.06) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(30,111,255,.06) 1px, transparent 1px);
+  background-size:60px 60px}
 .cursor{position:fixed;width:10px;height:10px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .1s,width .2s,height .2s;mix-blend-mode:screen}
-.cursor-trail{position:fixed;width:30px;height:30px;border:1px solid rgba(76,127,255,.3);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .15s ease}
+.cursor-trail{position:fixed;width:30px;height:30px;border:1px solid rgba(30,111,255,.3);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .15s ease}
 #stars{position:fixed;inset:0;pointer-events:none;z-index:0}
 .orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0;animation:drift 20s ease-in-out infinite}
-.orb1{width:600px;height:600px;background:rgba(76,127,255,.08);top:-200px;right:-100px}
-.orb2{width:500px;height:500px;background:rgba(168,85,247,.07);bottom:-100px;left:-150px;animation-delay:-10s}
+.orb1{width:600px;height:600px;background:rgba(30,111,255,.1);top:-200px;right:-100px}
+.orb2{width:500px;height:500px;background:rgba(10,50,120,.12);bottom:-100px;left:-150px;animation-delay:-10s}
 @keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(30px,20px)}}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
@@ -26,7 +42,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;ove
 .lang-switcher{display:flex;gap:.3rem;align-items:center}
 .lang-btn{background:none;border:1px solid var(--border);border-radius:6px;color:var(--muted);font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:600;padding:.3rem .6rem;cursor:pointer;transition:all .2s}
 .lang-btn:hover{border-color:var(--accent);color:var(--text)}
-.lang-btn.active{background:rgba(76,127,255,.15);border-color:var(--accent);color:var(--accent)}
+.lang-btn.active{background:rgba(30,111,255,.15);border-color:var(--accent);color:var(--accent)}
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2rem;display:flex;align-items:center;justify-content:space-between;background:rgba(5,7,15,.8);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
@@ -41,14 +57,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2rem;display:
 
 /* HERO */
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem 4rem;position:relative;z-index:1}
-.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(76,127,255,.1);border:1px solid rgba(76,127,255,.2);border-radius:20px;padding:.4rem 1rem;font-size:.8rem;font-weight:600;color:var(--accent);margin-bottom:2rem;animation:fadeUp .8s ease both}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(30,111,255,.1);border:1px solid rgba(30,111,255,.2);border-radius:20px;padding:.4rem 1rem;font-size:.8rem;font-weight:600;color:var(--accent);margin-bottom:2rem;animation:fadeUp .8s ease both}
 .hero-badge-dot{width:6px;height:6px;background:var(--green);border-radius:50%;box-shadow:0 0 6px var(--green);animation:pulse 2s infinite}
 .hero-title{font-family:'Syne',sans-serif;font-size:clamp(3rem,8vw,6.5rem);font-weight:800;line-height:1.05;letter-spacing:-2px;margin-bottom:1.5rem;animation:fadeUp .8s .1s ease both}
 .hero-title span{background:linear-gradient(135deg,var(--accent),var(--accent2),#ff6b9d);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .hero-sub{font-size:1.15rem;color:var(--muted);max-width:560px;line-height:1.7;margin-bottom:3rem;animation:fadeUp .8s .2s ease both;font-weight:300}
 .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;animation:fadeUp .8s .3s ease both}
-.btn-primary{display:inline-flex;align-items:center;gap:.6rem;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:.9rem 2rem;border-radius:12px;font-weight:700;font-size:1rem;text-decoration:none;transition:all .25s;box-shadow:0 0 40px rgba(76,127,255,.25)}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 60px rgba(76,127,255,.4)}
+.btn-primary{display:inline-flex;align-items:center;gap:.6rem;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:.9rem 2rem;border-radius:12px;font-weight:700;font-size:1rem;text-decoration:none;transition:all .25s;box-shadow:0 0 40px rgba(30,111,255,.25)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 60px rgba(30,111,255,.4)}
 .btn-secondary{display:inline-flex;align-items:center;gap:.6rem;background:rgba(255,255,255,.05);border:1px solid var(--border);color:var(--text);padding:.9rem 2rem;border-radius:12px;font-weight:600;font-size:1rem;text-decoration:none;transition:all .25s}
 .btn-secondary:hover{background:rgba(255,255,255,.09);transform:translateY(-2px)}
 .hero-stats{display:flex;gap:3rem;margin-top:4rem;animation:fadeUp .8s .4s ease both}
@@ -60,7 +76,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 2rem;display:
 
 /* SECTIONS */
 section{padding:6rem 2rem;position:relative;z-index:1}
-.section-badge{display:inline-block;background:rgba(76,127,255,.1);border:1px solid rgba(76,127,255,.15);border-radius:6px;padding:.3rem .8rem;font-size:.75rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem}
+.section-badge{display:inline-block;background:rgba(30,111,255,.1);border:1px solid rgba(30,111,255,.15);border-radius:6px;padding:.3rem .8rem;font-size:.75rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem}
 .section-title{font-family:'Syne',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-1px;margin-bottom:1rem}
 .section-sub{color:var(--muted);font-size:1rem;max-width:500px;line-height:1.7;font-weight:300}
 .centered{text-align:center;display:flex;flex-direction:column;align-items:center}
@@ -72,13 +88,13 @@ section{padding:6rem 2rem;position:relative;z-index:1}
 /* FEATURES */
 .features-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:1.2rem;margin-top:3.5rem}
 .feat{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:1.8rem;position:relative;overflow:hidden;transition:all .3s}
-.feat::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(76,127,255,.04),transparent);opacity:0;transition:.3s}
-.feat:hover{transform:translateY(-4px);border-color:rgba(76,127,255,.25)}
+.feat::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(30,111,255,.04),transparent);opacity:0;transition:.3s}
+.feat:hover{transform:translateY(-4px);border-color:rgba(30,111,255,.25)}
 .feat:hover::before{opacity:1}
 .feat-icon{font-size:2rem;margin-bottom:1rem;display:block}
 .feat-title{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:.5rem}
 .feat-desc{color:var(--muted);font-size:.88rem;line-height:1.7;font-weight:300}
-.feat-tag{display:inline-block;margin-top:.8rem;background:rgba(76,127,255,.1);border:1px solid rgba(76,127,255,.15);border-radius:4px;padding:.15rem .5rem;font-size:.7rem;font-weight:600;color:var(--accent)}
+.feat-tag{display:inline-block;margin-top:.8rem;background:rgba(30,111,255,.1);border:1px solid rgba(30,111,255,.15);border-radius:4px;padding:.15rem .5rem;font-size:.7rem;font-weight:600;color:var(--accent)}
 
 /* COMMANDS */
 .commands-wrap{margin-top:3.5rem}
@@ -87,17 +103,17 @@ section{padding:6rem 2rem;position:relative;z-index:1}
 .cmd-cat-title::after{content:'';flex:1;height:1px;background:var(--border)}
 .cmd-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.6rem}
 .cmd-item{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:.9rem 1.1rem;transition:all .2s}
-.cmd-item:hover{border-color:rgba(76,127,255,.3);background:var(--bg3)}
+.cmd-item:hover{border-color:rgba(30,111,255,.3);background:var(--bg3)}
 .cmd-name{font-family:'DM Sans',monospace;font-size:.85rem;font-weight:700;color:var(--accent);margin-bottom:.2rem}
 .cmd-desc{font-size:.78rem;color:var(--muted);font-weight:300}
 
 /* DONATE */
-.donate-section{background:linear-gradient(135deg,rgba(76,127,255,.05),rgba(168,85,247,.05));border:1px solid var(--border);border-radius:24px;padding:4rem;text-align:center;position:relative;overflow:hidden}
-.donate-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(76,127,255,.08),transparent 70%)}
+.donate-section{background:linear-gradient(135deg,rgba(30,111,255,.05),rgba(14,52,120,.05));border:1px solid var(--border);border-radius:24px;padding:4rem;text-align:center;position:relative;overflow:hidden}
+.donate-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(30,111,255,.08),transparent 70%)}
 .donate-tiers{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-top:3rem}
 .tier{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:2rem 1.8rem;width:240px;text-align:center;transition:all .3s;position:relative}
-.tier:hover{transform:translateY(-5px);border-color:rgba(76,127,255,.3)}
-.tier.featured{border-color:rgba(76,127,255,.4);background:linear-gradient(135deg,rgba(76,127,255,.06),rgba(168,85,247,.04))}
+.tier:hover{transform:translateY(-5px);border-color:rgba(30,111,255,.3)}
+.tier.featured{border-color:rgba(30,111,255,.4);background:linear-gradient(135deg,rgba(30,111,255,.06),rgba(14,52,120,.04))}
 .tier-popular{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:.7rem;font-weight:700;padding:.3rem .8rem;border-radius:20px;white-space:nowrap}
 .tier-icon{font-size:2.5rem;margin-bottom:.8rem}
 .tier-name{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:.5rem}
@@ -109,13 +125,13 @@ section{padding:6rem 2rem;position:relative;z-index:1}
 .tier-btn{display:block;margin-top:1.2rem;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;padding:.75rem;border-radius:10px;font-weight:700;font-size:.88rem;text-decoration:none;transition:all .2s}
 .tier-btn:hover{opacity:.85;transform:translateY(-1px)}
 .tier-btn.outline{background:transparent;border:1px solid var(--border);color:var(--text)}
-.tier-btn.outline:hover{border-color:var(--accent);background:rgba(76,127,255,.08)}
+.tier-btn.outline:hover{border-color:var(--accent);background:rgba(30,111,255,.1)}
 
 /* STEPS */
 .steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.5rem;margin-top:3.5rem;position:relative}
 .steps::before{content:'';position:absolute;top:2.5rem;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--border),var(--border),transparent)}
 .step{text-align:center;padding:1.5rem}
-.step-num{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;margin:0 auto 1rem;box-shadow:0 0 30px rgba(76,127,255,.3)}
+.step-num{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;margin:0 auto 1rem;box-shadow:0 0 30px rgba(30,111,255,.3)}
 .step-title{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:.5rem}
 .step-desc{font-size:.84rem;color:var(--muted);font-weight:300;line-height:1.65}
 
@@ -123,7 +139,7 @@ section{padding:6rem 2rem;position:relative;z-index:1}
 .term-topbar{background:#0a0a14;padding:.7rem 1rem;display:flex;align-items:center;gap:.4rem;border-bottom:1px solid rgba(255,255,255,.05)}
 .tdot{width:11px;height:11px;border-radius:50%}
 .term-body{padding:1.5rem;font-family:'DM Sans',monospace;font-size:.85rem;line-height:2}
-.tl-cmd{color:#4c7fff}.tl-ok{color:#22d3a0}.tl-muted{color:#4a5280}.tl-bot{color:#a855f7}
+.tl-cmd{color:#1e6fff}.tl-ok{color:#22d3a0}.tl-muted{color:#4a5280}.tl-bot{color:#3a7fd4}
 .type-cursor{display:inline-block;width:2px;height:1em;background:var(--accent);animation:blink .8s infinite;vertical-align:text-bottom;margin-left:2px}
 
 /* FAQ */
@@ -165,6 +181,9 @@ footer{border-top:1px solid var(--border);padding:3rem 2rem;text-align:center;po
       <a href="#how" data-i18n="nav.setup">Setup</a>
       <a href="#donate" data-i18n="nav.donate">Donate</a>
       <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      <a href="#changelog" data-i18n="nav.changelog">Changelog</a>
+      <a href="#" onclick="openModal('tos')" data-i18n="footer.tos">Terms</a>
+      <a href="#" onclick="openModal('privacy')" data-i18n="footer.privacy">Datenschutz</a>
       <a href="https://discord.gg/WT9vEJZV4R" target="_blank" style="display:flex;align-items:center;gap:.35rem">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.043.031.056a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
         Discord
@@ -181,6 +200,15 @@ footer{border-top:1px solid var(--border);padding:3rem 2rem;text-align:center;po
       <button class="lang-btn" onclick="setLang('es')">🇪🇸 ES</button>
     </div>
     <a href="https://discord.com/oauth2/authorize?client_id=1470444430589825197&permissions=8&scope=bot%20applications.commands" target="_blank" class="nav-cta" data-i18n="nav.invite">+ Bot einladen</a>
+    <div id="nav-user" style="display:none;align-items:center;gap:.6rem;background:rgba(88,101,242,.12);border:1px solid rgba(88,101,242,.3);border-radius:20px;padding:.3rem .8rem .3rem .4rem;cursor:pointer" onclick="logoutDiscord()" title="Logout">
+      <img id="nav-avatar" src="" width="26" height="26" style="border-radius:50%;border:1px solid rgba(88,101,242,.4)">
+      <span id="nav-username" style="font-size:.82rem;font-weight:600;color:var(--text)"></span>
+      <span style="font-size:.7rem;color:var(--muted)">✕</span>
+    </div>
+    <button id="nav-login-btn" onclick="loginDiscord()" style="background:rgba(88,101,242,.12);border:1px solid rgba(88,101,242,.3);border-radius:20px;padding:.4rem 1rem;color:#7289da;font-size:.82rem;font-weight:700;cursor:pointer;transition:all .2s;font-family:'DM Sans',sans-serif" onmouseover="this.style.background='rgba(88,101,242,.25)'" onmouseout="this.style.background='rgba(88,101,242,.12)'">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:.3rem"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+      Login
+    </button>
   </div>
 </nav>
 
@@ -224,6 +252,7 @@ footer{border-top:1px solid var(--border);padding:3rem 2rem;text-align:center;po
       <div class="feat reveal"><span class="feat-icon">🎖️</span><div class="feat-title" data-i18n="feat.jr.title">Join Roles</div><div class="feat-desc" data-i18n="feat.jr.desc">Gib neuen Mitgliedern automatisch Rollen wenn sie dem Server beitreten.</div><span class="feat-tag">/joinrole add</span></div>
       <div class="feat reveal"><span class="feat-icon">👋</span><div class="feat-title" data-i18n="feat.welcome.title">Welcome Messages</div><div class="feat-desc" data-i18n="feat.welcome.desc">Begrüße neue Mitglieder mit personalisierten Nachrichten, Titel, Farben und Banner-Bild.</div><span class="feat-tag">/welcome-message setup</span></div>
       <div class="feat reveal"><span class="feat-icon">🤖</span><div class="feat-title" data-i18n="feat.automod.title">Automod</div><div class="feat-desc" data-i18n="feat.automod.desc">Automatische Erkennung von Schimpfwörtern, Spam, Invite-Links und Custom-Wörtern.</div><span class="feat-tag">/automod setup</span></div>
+      <div class="feat reveal"><span class="feat-icon">🎤</span><div class="feat-title" data-i18n="feat.voicesupport.title">Voice Support</div><div class="feat-desc" data-i18n="feat.voicesupport.desc">Wenn ein User den Support-Channel betritt, werden alle Staff Member automatisch gepingt.</div><span class="feat-tag">/support-setup</span></div>
     </div>
   </div>
 </section>
@@ -273,6 +302,7 @@ footer{border-top:1px solid var(--border);padding:3rem 2rem;text-align:center;po
         <div class="cmd-item"><div class="cmd-name">/language</div><div class="cmd-desc" data-i18n="cmd.language">Sprache wechseln (DE/EN)</div></div>
         <div class="cmd-item"><div class="cmd-name">/meme</div><div class="cmd-desc" data-i18n="cmd.meme">Zufälliges Meme</div></div>
         <div class="cmd-item"><div class="cmd-name">/ping</div><div class="cmd-desc" data-i18n="cmd.ping">Bot-Latenz anzeigen</div></div>
+        <div class="cmd-item"><div class="cmd-name">/support-setup</div><div class="cmd-desc" data-i18n="cmd.supportsetup">Voice-Support einrichten</div></div>
       </div></div>
     </div>
   </div>
@@ -358,6 +388,106 @@ footer{border-top:1px solid var(--border);padding:3rem 2rem;text-align:center;po
 
 <div class="divider"></div>
 
+<!-- CHANGELOG -->
+<section id="changelog" style="padding:6rem 2rem;position:relative;z-index:1">
+  <div style="max-width:900px;margin:0 auto">
+    <div style="text-align:center;margin-bottom:3.5rem">
+      <div class="section-badge reveal" data-i18n="changelog.badge">Changelog</div>
+      <h2 class="section-title reveal" data-i18n="changelog.title">Was ist neu.</h2>
+      <p class="section-sub reveal" data-i18n="changelog.sub">Die neuesten Updates und Verbesserungen von OneBot.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:1.2rem">
+
+      <!-- v1.4 -->
+      <div class="reveal" style="background:linear-gradient(135deg,var(--bg2),var(--bg3));border:1px solid rgba(30,111,255,.15);border-radius:16px;padding:1.8rem;display:flex;gap:1.5rem;align-items:flex-start">
+        <div style="flex-shrink:0;text-align:center">
+          <div style="background:rgba(30,111,255,.15);border:1px solid rgba(30,111,255,.3);border-radius:10px;padding:.5rem .9rem;font-family:'Syne',sans-serif;font-weight:800;font-size:.85rem;color:var(--accent);white-space:nowrap">v3.0</div>
+          <div style="font-size:.72rem;color:var(--muted);margin-top:.4rem" data-i18n="cl.v14.date">März 2026</div>
+        </div>
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.8rem">
+            <span style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.05rem" data-i18n="cl.v14.title">Voice Support System</span>
+            <span style="background:rgba(30,255,120,.12);border:1px solid rgba(30,255,120,.25);border-radius:20px;padding:.15rem .6rem;font-size:.72rem;font-weight:700;color:#22d3a0" data-i18n="cl.v14.new">NEU</span>
+          </div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:.45rem">
+            <li style="font-size:.88rem;color:var(--muted);display:flex;gap:.6rem"><span style="color:var(--accent)">+</span><span data-i18n="cl.v14.1">/support-setup Command — Voice Channel, Log Channel & Staff Rolle konfigurieren</span></li>
+            <li style="font-size:.88rem;color:var(--muted);display:flex;gap:.6rem"><span style="color:var(--accent)">+</span><span data-i18n="cl.v14.2">Staff wird automatisch gepingt wenn jemand den Support-Channel betritt</span></li>
+            <li style="font-size:.88rem;color:var(--muted);display:flex;gap:.6rem"><span style="color:var(--accent)">+</span><span data-i18n="cl.v14.3">Embed mit User-Info, Channel & Zeitstempel im Log-Channel</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- v1.3 -->
+      <div class="reveal" style="background:linear-gradient(135deg,var(--bg2),var(--bg3));border:1px solid rgba(30,111,255,.1);border-radius:16px;padding:1.8rem;display:flex;gap:1.5rem;align-items:flex-start">
+        <div style="flex-shrink:0;text-align:center">
+          <div style="background:rgba(30,111,255,.1);border:1px solid rgba(30,111,255,.2);border-radius:10px;padding:.5rem .9rem;font-family:'Syne',sans-serif;font-weight:800;font-size:.85rem;color:var(--muted);white-space:nowrap">v2.5</div>
+          <div style="font-size:.72rem;color:var(--muted);margin-top:.4rem" data-i18n="cl.v13.date">Feb 2026</div>
+        </div>
+        <div style="flex:1">
+          <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.05rem;margin-bottom:.8rem" data-i18n="cl.v13.title">Join Roles & Verbesserungen</div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:.45rem">
+            <li style="font-size:.88rem;color:var(--muted);display:flex;gap:.6rem"><span style="color:var(--accent)">+</span><span data-i18n="cl.v13.1">/joinrole — Automatische Rollenvergabe beim Server-Beitritt</span></li>
+            <li style="font-size:.88rem;color:var(--muted);display:flex;gap:.6rem"><span style="color:var(--accent)">+</span><span data-i18n="cl.v13.2">Mehrsprachigkeit verbessert (DE/EN/FR/ES)</span></li>
+            <li style="font-size:.88rem;color:var(--muted);display:flex;gap:.6rem"><span style="color:#f59e0b">~</span><span data-i18n="cl.v13.3">Ticket-System: Double-Close Bug behoben</span></li>
+            <li style="font-size:.88rem;color:var(--muted);display:flex;gap:.6rem"><span style="color:#f59e0b">~</span><span data-i18n="cl.v13.4">Notification-System: YouTube UC-ID Support verbessert</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- v1.2 -->
+      <div class="reveal" style="background:linear-gradient(135deg,var(--bg2),var(--bg3));border:1px solid rgba(30,111,255,.1);border-radius:16px;padding:1.8rem;display:flex;gap:1.5rem;align-items:flex-start">
+        <div style="flex-shrink:0;text-align:center">
+          <div style="background:rgba(30,111,255,.1);border:1px solid rgba(30,111,255,.2);border-radius:10px;padding:.5rem .9rem;font-family:'Syne',sans-serif;font-weight:800;font-size:.85rem;color:var(--muted);white-space:nowrap">v2.0</div>
+          <div style="font-size:.72rem;color:var(--muted);margin-top:.4rem" data-i18n="cl.v12.date">Jan 2026</div>
+        </div>
+        <div style="flex:1">
+          <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.05rem;margin-bottom:.8rem" data-i18n="cl.v12.title">Reaction Roles & Bewerbungssystem</div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:.45rem">
+            <li style="font-size:.88rem;color:var(--muted);display:flex;gap:.6rem"><span style="color:var(--accent)">+</span><span data-i18n="cl.v12.1">Reaction Roles mit remove_role Option</span></li>
+            <li style="font-size:.88rem;color:var(--muted);display:flex;gap:.6rem"><span style="color:var(--accent)">+</span><span data-i18n="cl.v12.2">Bewerbungssystem mit mehreren Apps & Rollenvergabe</span></li>
+            <li style="font-size:.88rem;color:var(--muted);display:flex;gap:.6rem"><span style="color:var(--accent)">+</span><span data-i18n="cl.v12.3">/moderationlog Command</span></li>
+            <li style="font-size:.88rem;color:var(--muted);display:flex;gap:.6rem"><span style="color:#f59e0b">~</span><span data-i18n="cl.v12.4">Ban/Kick/Mute: DM-Benachrichtigung & ephemeral Antworten</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- v1.1 -->
+      <div class="reveal" style="background:linear-gradient(135deg,var(--bg2),var(--bg3));border:1px solid rgba(30,111,255,.1);border-radius:16px;padding:1.8rem;display:flex;gap:1.5rem;align-items:flex-start">
+        <div style="flex-shrink:0;text-align:center">
+          <div style="background:rgba(30,111,255,.1);border:1px solid rgba(30,111,255,.2);border-radius:10px;padding:.5rem .9rem;font-family:'Syne',sans-serif;font-weight:800;font-size:.85rem;color:var(--muted);white-space:nowrap">v1.5</div>
+          <div style="font-size:.72rem;color:var(--muted);margin-top:.4rem" data-i18n="cl.v11.date">Dez 2025</div>
+        </div>
+        <div style="flex:1">
+          <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.05rem;margin-bottom:.8rem" data-i18n="cl.v11.title">Automod & Notifications</div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:.45rem">
+            <li style="font-size:.88rem;color:var(--muted);display:flex;gap:.6rem"><span style="color:var(--accent)">+</span><span data-i18n="cl.v11.1">Automod: Schimpfwörter, Spam, Invite-Links, Custom-Wörter</span></li>
+            <li style="font-size:.88rem;color:var(--muted);display:flex;gap:.6rem"><span style="color:var(--accent)">+</span><span data-i18n="cl.v11.2">Social Notifications: YouTube, Instagram, TikTok</span></li>
+            <li style="font-size:.88rem;color:var(--muted);display:flex;gap:.6rem"><span style="color:var(--accent)">+</span><span data-i18n="cl.v11.3">Welcome Messages mit Banner & Custom-Farben</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- v1.0 -->
+      <div class="reveal" style="background:linear-gradient(135deg,var(--bg2),var(--bg3));border:1px solid rgba(30,111,255,.1);border-radius:16px;padding:1.8rem;display:flex;gap:1.5rem;align-items:flex-start">
+        <div style="flex-shrink:0;text-align:center">
+          <div style="background:rgba(30,111,255,.1);border:1px solid rgba(30,111,255,.2);border-radius:10px;padding:.5rem .9rem;font-family:'Syne',sans-serif;font-weight:800;font-size:.85rem;color:var(--muted);white-space:nowrap">v1.0</div>
+          <div style="font-size:.72rem;color:var(--muted);margin-top:.4rem" data-i18n="cl.v10.date">Nov 2025</div>
+        </div>
+        <div style="flex:1">
+          <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:1.05rem;margin-bottom:.8rem" data-i18n="cl.v10.title">Erster Release 🎉</div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:.45rem">
+            <li style="font-size:.88rem;color:var(--muted);display:flex;gap:.6rem"><span style="color:var(--accent)">+</span><span data-i18n="cl.v10.1">Ticket-System mit Kategorien & Staff-Rollen</span></li>
+            <li style="font-size:.88rem;color:var(--muted);display:flex;gap:.6rem"><span style="color:var(--accent)">+</span><span data-i18n="cl.v10.2">Moderation: Ban, Kick, Mute</span></li>
+            <li style="font-size:.88rem;color:var(--muted);display:flex;gap:.6rem"><span style="color:var(--accent)">+</span><span data-i18n="cl.v10.3">Ping & Help Commands</span></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
 <!-- COMMUNITY -->
 <section id="community" style="padding:5rem 2rem">
   <div class="container">
@@ -365,8 +495,7 @@ footer{border-top:1px solid var(--border);padding:3rem 2rem;text-align:center;po
       <span class="section-badge" data-i18n="community.badge">Community</span>
       <h2 class="section-title" data-i18n-html="community.title">Werde Teil der<br>Community.</h2>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:3rem;max-width:700px;margin-left:auto;margin-right:auto" class="reveal">
-      <!-- Discord -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.2rem;margin-top:3rem">
       <a href="https://discord.gg/WT9vEJZV4R" target="_blank" style="text-decoration:none">
         <div style="background:#5865f2;border-radius:16px;padding:2rem;text-align:center;transition:all .3s;border:1px solid rgba(88,101,242,.3)" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 0 50px rgba(88,101,242,.3)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">
           <svg width="40" height="40" viewBox="0 0 24 24" fill="white" style="margin-bottom:1rem"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.043.031.056a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
@@ -385,6 +514,17 @@ footer{border-top:1px solid var(--border);padding:3rem 2rem;text-align:center;po
           <div style="margin-top:1rem;background:rgba(255,40,40,.2);border:1px solid rgba(255,60,60,.35);border-radius:8px;padding:.5rem;font-size:.82rem;font-weight:700;color:#ff7070" data-i18n="community.subscribe">Kanal abonnieren →</div>
         </div>
       </a>
+
+      <a href="https://x.com/OneBot_V3" target="_blank" style="text-decoration:none">
+        <div style="background:#050505;border-radius:16px;padding:2rem;text-align:center;transition:all .3s;border:1px solid rgba(255,255,255,.12);position:relative;overflow:hidden;height:100%" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(255,255,255,.4)';this.style.boxShadow='0 0 50px rgba(255,255,255,.08)'" onmouseout="this.style.transform='none';this.style.borderColor='rgba(255,255,255,.12)';this.style.boxShadow='none'">
+          <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(255,255,255,.05),transparent 65%);pointer-events:none"></div>
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="#fff" style="margin-bottom:1rem"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          <div style="font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;color:#fff;margin-bottom:.4rem">X (Twitter)</div>
+          <div style="font-size:.85rem;color:rgba(255,255,255,.5);font-weight:300" data-i18n="community.twitter">News & Updates</div>
+          <div style="margin-top:1rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:.5rem;font-size:.82rem;font-weight:700;color:#fff" data-i18n="community.follow">Folgen →</div>
+        </div>
+      </a>
+    </div>
     </div>
   </div>
 </section>
@@ -426,6 +566,7 @@ const i18n = {
     "feat.jr.title":"Join Roles","feat.jr.desc":"Gib neuen Mitgliedern automatisch Rollen wenn sie dem Server beitreten.",
     "feat.welcome.title":"Welcome Messages","feat.welcome.desc":"Begrüße neue Mitglieder mit personalisierten Nachrichten, Titel, Farben und Banner.",
     "feat.automod.title":"Automod","feat.automod.desc":"Automatische Erkennung von Schimpfwörtern, Spam, Invite-Links und Custom-Wörtern.",
+    "feat.voicesupport.title":"Voice Support","feat.voicesupport.desc":"Wenn ein User den Support-Channel betritt, werden alle Staff Member automatisch gepingt.",
     "commands.title":"Alle verfügbaren<br>Commands.","commands.sub":"Alle Commands als Slash-Commands — direkt in Discord verfügbar.",
     "cmd.ticketsetup":"Ticket-System konfigurieren","cmd.ticket":"Ticket-Panel posten",
     "cmd.ban":"User dauerhaft bannen","cmd.kick":"User vom Server kicken","cmd.mute":"User temporär muten","cmd.modlog":"Mod-Log Channel setzen",
@@ -433,6 +574,7 @@ const i18n = {
     "cmd.notifadd":"Account abonnieren","cmd.notiflist":"Abos anzeigen","cmd.notifremove":"Abo entfernen",
     "cmd.cat.roles":"Rollen","cmd.rrcreate":"Panel erstellen","cmd.rradd":"Rolle hinzufügen","cmd.jradd":"Join-Rolle setzen","cmd.jrremove":"Join-Rolle entfernen",
     "cmd.cat.other":"Sonstiges","cmd.automod":"Automod aktivieren","cmd.welcome":"Willkommensnachricht","cmd.poll":"Abstimmung erstellen","cmd.language":"Sprache wechseln","cmd.meme":"Zufälliges Meme","cmd.ping":"Bot-Latenz anzeigen",
+    "cmd.cat.voice":"Voice Support","cmd.supportsetup":"Voice-Support einrichten",
     "setup.title":"In 3 Schritten<br>startklar.","setup.sub":"OneBot ist in wenigen Minuten einsatzbereit — kein kompliziertes Setup nötig.",
     "step1.title":"Bot einladen","step1.desc":"Klicke auf Bot einladen und wähle deinen Discord Server aus. Bestätige die Berechtigungen.",
     "step2.title":"Commands nutzen","step2.desc":"Starte mit /ticket-setup, /automod setup oder /welcome-message setup um Features zu aktivieren.",
@@ -442,8 +584,12 @@ const i18n = {
     "tier2.name":"Booster","tier2.p1":"Booster Rolle im Discord","tier.donate2":"Spenden 🚀",
     "tier3.name":"Supporter","tier3.p1":"Supporter Rolle im Discord","tier.donate3":"Spenden 💎",
     "faq.title":"Häufige Fragen.",
-    "community.badge":"Community","community.title":"Werde Teil der<br>Community.","community.discord":"Support, Updates & Community","community.join":"Server beitreten →","community.youtube":"Updates, Tutorials & mehr","community.subscribe":"Kanal abonnieren →",
+    "community.badge":"Community","community.title":"Werde Teil der<br>Community.","community.discord":"Support, Updates & Community","community.join":"Server beitreten →","community.youtube":"Updates, Tutorials & mehr","community.subscribe":"Kanal abonnieren →","community.twitter":"News & Updates auf X","community.follow":"Folgen →","community.x":"News & Updates","community.follow":"Folgen →",
     "footer.sub":"Der Discord Bot der alles kann. Kostenlos & für alle.","footer.tos":"Terms of Service","footer.privacy":"Datenschutz","tos.title":"Terms of Service","privacy.title":"Datenschutzerklärung",
+    "community.twitter":"News & Updates auf X","community.follow":"Folgen →",
+    "nav.changelog":"Changelog",
+    "changelog.title":"Was ist neu.","changelog.sub":"Die neuesten Updates und Verbesserungen von OneBot.","changelog.badge":"Changelog",
+    "cl.v14.title":"Voice Support System","cl.v14.new":"NEU","cl.v14.date":"März 2026","cl.v14.1":"/support-setup Command — Voice Channel, Log Channel & Staff Rolle konfigurieren","cl.v14.2":"Staff wird automatisch gepingt wenn jemand den Support-Channel betritt","cl.v14.3":"Embed mit User-Info, Channel & Zeitstempel im Log-Channel","cl.v13.title":"Join Roles & Verbesserungen","cl.v13.date":"Feb 2026","cl.v13.1":"/joinrole — Automatische Rollenvergabe beim Server-Beitritt","cl.v13.2":"Mehrsprachigkeit verbessert (DE/EN/FR/ES)","cl.v13.3":"Ticket-System: Double-Close Bug behoben","cl.v13.4":"Notification-System: YouTube UC-ID Support verbessert","cl.v12.title":"Reaction Roles & Bewerbungssystem","cl.v12.date":"Jan 2026","cl.v12.1":"Reaction Roles mit remove_role Option","cl.v12.2":"Bewerbungssystem mit mehreren Apps & Rollenvergabe","cl.v12.3":"/moderationlog Command","cl.v12.4":"Ban/Kick/Mute: DM-Benachrichtigung & ephemeral Antworten","cl.v11.title":"Automod & Notifications","cl.v11.date":"Dez 2025","cl.v11.1":"Automod: Schimpfwörter, Spam, Invite-Links, Custom-Wörter","cl.v11.2":"Social Notifications: YouTube, Instagram, TikTok","cl.v11.3":"Welcome Messages mit Banner & Custom-Farben","cl.v10.title":"Erster Release 🎉","cl.v10.date":"Nov 2025","cl.v10.1":"Ticket-System mit Kategorien & Staff-Rollen","cl.v10.2":"Moderation: Ban, Kick, Mute","cl.v10.3":"Ping & Help Commands",
     "footer.copy":"© 2026 OneBot — Made with ❤️ for Discord",
     "faq.items": [
       {q:"Ist OneBot wirklich kostenlos?", a:"Ja! OneBot ist komplett kostenlos und wird es bleiben. Alle Features sind ohne Bezahlung verfügbar."},
@@ -470,6 +616,7 @@ const i18n = {
     "feat.jr.title":"Join Roles","feat.jr.desc":"Automatically give new members roles when they join the server.",
     "feat.welcome.title":"Welcome Messages","feat.welcome.desc":"Greet new members with personalized messages, title, colors and banner image.",
     "feat.automod.title":"Automod","feat.automod.desc":"Automatic detection of slurs, spam, invite links and custom words.",
+    "feat.voicesupport.title":"Voice Support","feat.voicesupport.desc":"When a user enters the support channel, all staff members get automatically pinged.",
     "commands.title":"All available<br>commands.","commands.sub":"All commands as slash commands — available directly in Discord.",
     "cmd.ticketsetup":"Configure ticket system","cmd.ticket":"Post ticket panel",
     "cmd.ban":"Permanently ban user","cmd.kick":"Kick user from server","cmd.mute":"Temporarily mute user","cmd.modlog":"Set mod log channel",
@@ -477,6 +624,7 @@ const i18n = {
     "cmd.notifadd":"Subscribe to account","cmd.notiflist":"Show subscriptions","cmd.notifremove":"Remove subscription",
     "cmd.cat.roles":"Roles","cmd.rrcreate":"Create panel","cmd.rradd":"Add role","cmd.jradd":"Set join role","cmd.jrremove":"Remove join role",
     "cmd.cat.other":"Other","cmd.automod":"Enable automod","cmd.welcome":"Welcome message","cmd.poll":"Create poll","cmd.language":"Change language","cmd.meme":"Random meme","cmd.ping":"Bot latency",
+    "cmd.cat.voice":"Voice Support","cmd.supportsetup":"Set up voice support",
     "setup.title":"Ready in<br>3 steps.","setup.sub":"OneBot is ready in minutes — no complicated setup required.",
     "step1.title":"Invite Bot","step1.desc":"Click Invite Bot and select your Discord server. Confirm the permissions.",
     "step2.title":"Use Commands","step2.desc":"Start with /ticket-setup, /automod setup or /welcome-message setup to activate features.",
@@ -486,8 +634,12 @@ const i18n = {
     "tier2.name":"Booster","tier2.p1":"Booster role in Discord","tier.donate2":"Donate 🚀",
     "tier3.name":"Supporter","tier3.p1":"Supporter role in Discord","tier.donate3":"Donate 💎",
     "faq.title":"Frequently Asked Questions.",
-    "community.badge":"Community","community.title":"Join the<br>Community.","community.discord":"Support, updates & community","community.join":"Join server →","community.youtube":"Updates, tutorials & more","community.subscribe":"Subscribe →",
+    "community.badge":"Community","community.title":"Join the<br>Community.","community.discord":"Support, updates & community","community.join":"Join server →","community.youtube":"Updates, tutorials & more","community.subscribe":"Subscribe →","community.twitter":"News & Updates on X","community.follow":"Follow →","community.x":"News & Updates","community.follow":"Follow →",
     "footer.sub":"The Discord bot that does everything. Free & for everyone.","footer.tos":"Terms of Service","footer.privacy":"Privacy Policy","tos.title":"Terms of Service","privacy.title":"Privacy Policy",
+    "community.twitter":"News & Updates on X","community.follow":"Follow →",
+    "nav.changelog":"Changelog",
+    "changelog.title":"What's new.","changelog.sub":"The latest updates and improvements to OneBot.","changelog.badge":"Changelog",
+    "cl.v14.title":"Voice Support System","cl.v14.new":"NEW","cl.v14.date":"March 2026","cl.v14.1":"/support-setup — Configure voice channel, log channel & staff role","cl.v14.2":"Staff gets automatically pinged when someone enters the support channel","cl.v14.3":"Embed with user info, channel & timestamp in log channel","cl.v13.title":"Join Roles & Improvements","cl.v13.date":"Feb 2026","cl.v13.1":"/joinrole — Automatic role assignment on server join","cl.v13.2":"Multilingual support improved (DE/EN/FR/ES)","cl.v13.3":"Ticket system: Double-close bug fixed","cl.v13.4":"Notification system: YouTube UC-ID support improved","cl.v12.title":"Reaction Roles & Application System","cl.v12.date":"Jan 2026","cl.v12.1":"Reaction roles with remove_role option","cl.v12.2":"Application system with multiple apps & role assignment","cl.v12.3":"/moderationlog command","cl.v12.4":"Ban/Kick/Mute: DM notification & ephemeral replies","cl.v11.title":"Automod & Notifications","cl.v11.date":"Dec 2025","cl.v11.1":"Automod: Slurs, spam, invite links, custom words","cl.v11.2":"Social Notifications: YouTube, Instagram, TikTok","cl.v11.3":"Welcome messages with banner & custom colors","cl.v10.title":"First Release 🎉","cl.v10.date":"Nov 2025","cl.v10.1":"Ticket system with categories & staff roles","cl.v10.2":"Moderation: Ban, Kick, Mute","cl.v10.3":"Ping & Help commands",
     "footer.copy":"© 2026 OneBot — Made with ❤️ for Discord",
     "faq.items": [
       {q:"Is OneBot really free?", a:"Yes! OneBot is completely free and will stay that way. All features are available without payment."},
@@ -514,6 +666,7 @@ const i18n = {
     "feat.jr.title":"Rôles à l\u2019Entrée","feat.jr.desc":"Donnez automatiquement des rôles aux nouveaux membres quand ils rejoignent.",
     "feat.welcome.title":"Messages de Bienvenue","feat.welcome.desc":"Accueillez les nouveaux membres avec des messages personnalisés, titre, couleurs et bannière.",
     "feat.automod.title":"Automod","feat.automod.desc":"Détection automatique des insultes, spam, liens d\u2019invitation et mots personnalisés.",
+    "feat.voicesupport.title":"Voice Support","feat.voicesupport.desc":"Quand un utilisateur rejoint le canal de support, tous les membres du staff sont automatiquement notifiés.",
     "commands.title":"Toutes les<br>commandes.","commands.sub":"Toutes les commandes en slash — disponibles directement dans Discord.",
     "cmd.ticketsetup":"Configurer le système de tickets","cmd.ticket":"Publier le panneau de tickets",
     "cmd.ban":"Bannir définitivement","cmd.kick":"Expulser du serveur","cmd.mute":"Réduire au silence","cmd.modlog":"Définir le canal de modération",
@@ -521,6 +674,7 @@ const i18n = {
     "cmd.notifadd":"S\u2019abonner au compte","cmd.notiflist":"Voir les abonnements","cmd.notifremove":"Supprimer l\u2019abonnement",
     "cmd.cat.roles":"Rôles","cmd.rrcreate":"Créer un panneau","cmd.rradd":"Ajouter un rôle","cmd.jradd":"Définir rôle d\u2019entrée","cmd.jrremove":"Supprimer rôle d\u2019entrée",
     "cmd.cat.other":"Autre","cmd.automod":"Activer l\u2019automod","cmd.welcome":"Message de bienvenue","cmd.poll":"Créer un sondage","cmd.language":"Changer de langue","cmd.meme":"Mème aléatoire","cmd.ping":"Latence du bot",
+    "cmd.supportsetup":"Configurer le support vocal",
     "setup.title":"Prêt en<br>3 étapes.","setup.sub":"OneBot est prêt en quelques minutes — aucune configuration compliquée.",
     "step1.title":"Inviter le Bot","step1.desc":"Cliquez sur Inviter le Bot et sélectionnez votre serveur Discord.",
     "step2.title":"Utiliser les Commandes","step2.desc":"Commencez avec /ticket-setup, /automod setup ou /welcome-message setup.",
@@ -530,8 +684,12 @@ const i18n = {
     "tier2.name":"Booster","tier2.p1":"Rôle Booster sur Discord","tier.donate2":"Donner 🚀",
     "tier3.name":"Supporter","tier3.p1":"Rôle Supporter sur Discord","tier.donate3":"Donner 💎",
     "faq.title":"Questions Fréquentes.",
-    "community.badge":"Communauté","community.title":"Rejoins la<br>Communauté.","community.discord":"Support, mises à jour & communauté","community.join":"Rejoindre →","community.youtube":"Mises à jour, tutoriels & plus","community.subscribe":"S\u2019abonner →",
+    "community.badge":"Communauté","community.title":"Rejoins la<br>Communauté.","community.discord":"Support, mises à jour & communauté","community.join":"Rejoindre →","community.youtube":"Mises à jour, tutoriels & plus","community.subscribe":"S\u2019abonner →","community.twitter":"News & Updates sur X","community.follow":"Suivre →","community.x":"Actualités & mises à jour","community.follow":"Suivre →",
     "footer.sub":"Le bot Discord qui fait tout. Gratuit & pour tous.","footer.tos":"Conditions d’utilisation","footer.privacy":"Confidentialité","tos.title":"Conditions d’utilisation","privacy.title":"Politique de confidentialité",
+    "community.twitter":"Actualités & mises à jour sur X","community.follow":"Suivre →",
+    "nav.changelog":"Changelog",
+    "changelog.title":"Quoi de neuf.","changelog.sub":"Les dernières mises à jour et améliorations de OneBot.","changelog.badge":"Changelog",
+    "cl.v14.title":"Système de Support Vocal","cl.v14.new":"NOUVEAU","cl.v14.date":"Mars 2026","cl.v14.1":"/support-setup — Configurer le canal vocal, le canal de logs & le rôle du staff","cl.v14.2":"Le staff est automatiquement notifié quand quelqu’un entre dans le canal de support","cl.v14.3":"Embed avec infos utilisateur, canal & horodatage dans le canal de logs","cl.v13.title":"Rôles d’Entrée & Améliorations","cl.v13.date":"Fév 2026","cl.v13.1":"/joinrole — Attribution automatique de rôles à l’arrivée","cl.v13.2":"Support multilingue amélioré (DE/EN/FR/ES)","cl.v13.3":"Système de tickets: bug double-fermeture corrigé","cl.v13.4":"Notifications: support UC-ID YouTube amélioré","cl.v12.title":"Rôles de Réaction & Candidatures","cl.v12.date":"Jan 2026","cl.v12.1":"Rôles de réaction avec option remove_role","cl.v12.2":"Système de candidatures avec plusieurs apps & attribution de rôles","cl.v12.3":"Commande /moderationlog","cl.v12.4":"Ban/Kick/Mute: notification DM & réponses éphémères","cl.v11.title":"Automod & Notifications","cl.v11.date":"Déc 2025","cl.v11.1":"Automod: insultes, spam, liens d’invitation, mots personnalisés","cl.v11.2":"Notifications sociales: YouTube, Instagram, TikTok","cl.v11.3":"Messages de bienvenue avec bannière & couleurs personnalisées","cl.v10.title":"Première Version 🎉","cl.v10.date":"Nov 2025","cl.v10.1":"Système de tickets avec catégories & rôles du staff","cl.v10.2":"Modération: Ban, Kick, Mute","cl.v10.3":"Commandes Ping & Help",
     "footer.copy":"© 2026 OneBot — Fait avec ❤️ pour Discord",
     "faq.items": [
       {q:"OneBot est-il vraiment gratuit?", a:"Oui! OneBot est entièrement gratuit et le restera. Toutes les fonctionnalités sont disponibles sans paiement."},
@@ -558,6 +716,7 @@ const i18n = {
     "feat.jr.title":"Roles de Entrada","feat.jr.desc":"Da automáticamente roles a nuevos miembros cuando se unen al servidor.",
     "feat.welcome.title":"Mensajes de Bienvenida","feat.welcome.desc":"Da la bienvenida a nuevos miembros con mensajes personalizados, título, colores y banner.",
     "feat.automod.title":"Automod","feat.automod.desc":"Detección automática de palabras ofensivas, spam, enlaces de invitación y palabras personalizadas.",
+    "feat.voicesupport.title":"Voice Support","feat.voicesupport.desc":"Cuando un usuario entra al canal de soporte, todos los miembros del staff son notificados automáticamente.",
     "commands.title":"Todos los<br>comandos.","commands.sub":"Todos los comandos como slash commands — disponibles directamente en Discord.",
     "cmd.ticketsetup":"Configurar sistema de tickets","cmd.ticket":"Publicar panel de tickets",
     "cmd.ban":"Banear permanentemente","cmd.kick":"Expulsar del servidor","cmd.mute":"Silenciar temporalmente","cmd.modlog":"Configurar canal de moderación",
@@ -565,6 +724,7 @@ const i18n = {
     "cmd.notifadd":"Suscribirse a cuenta","cmd.notiflist":"Ver suscripciones","cmd.notifremove":"Eliminar suscripción",
     "cmd.cat.roles":"Roles","cmd.rrcreate":"Crear panel","cmd.rradd":"Añadir rol","cmd.jradd":"Configurar rol de entrada","cmd.jrremove":"Eliminar rol de entrada",
     "cmd.cat.other":"Otros","cmd.automod":"Activar automod","cmd.welcome":"Mensaje de bienvenida","cmd.poll":"Crear encuesta","cmd.language":"Cambiar idioma","cmd.meme":"Meme aleatorio","cmd.ping":"Latencia del bot",
+    "cmd.cat.voice":"Voice Support","cmd.supportsetup":"Configurar soporte de voz",
     "setup.title":"Listo en<br>3 pasos.","setup.sub":"OneBot está listo en minutos — sin configuración complicada.",
     "step1.title":"Invitar Bot","step1.desc":"Haz clic en Invitar Bot y selecciona tu servidor de Discord.",
     "step2.title":"Usar Comandos","step2.desc":"Empieza con /ticket-setup, /automod setup o /welcome-message setup para activar funciones.",
@@ -574,8 +734,12 @@ const i18n = {
     "tier2.name":"Booster","tier2.p1":"Rol Booster en Discord","tier.donate2":"Donar 🚀",
     "tier3.name":"Supporter","tier3.p1":"Rol Supporter en Discord","tier.donate3":"Donar 💎",
     "faq.title":"Preguntas Frecuentes.",
-    "community.badge":"Comunidad","community.title":"Únete a la<br>Comunidad.","community.discord":"Soporte, actualizaciones & comunidad","community.join":"Unirse al servidor →","community.youtube":"Actualizaciones, tutoriales & más","community.subscribe":"Suscribirse →",
+    "community.badge":"Comunidad","community.title":"Únete a la<br>Comunidad.","community.discord":"Soporte, actualizaciones & comunidad","community.join":"Unirse al servidor →","community.youtube":"Actualizaciones, tutoriales & más","community.subscribe":"Suscribirse →","community.twitter":"Noticias & Updates en X","community.follow":"Seguir →","community.x":"Noticias & actualizaciones","community.follow":"Seguir →",
     "footer.sub":"El bot de Discord que hace todo. Gratis & para todos.","footer.tos":"Términos de servicio","footer.privacy":"Privacidad","tos.title":"Términos de servicio","privacy.title":"Política de privacidad",
+    "community.twitter":"Noticias & actualizaciones en X","community.follow":"Seguir →",
+    "nav.changelog":"Changelog",
+    "changelog.title":"¿Qué hay de nuevo?","changelog.sub":"Las últimas actualizaciones y mejoras de OneBot.","changelog.badge":"Changelog",
+    "cl.v14.title":"Sistema de Soporte de Voz","cl.v14.new":"NUEVO","cl.v14.date":"Marzo 2026","cl.v14.1":"/support-setup — Configurar canal de voz, canal de logs y rol del staff","cl.v14.2":"El staff recibe ping automáticamente cuando alguien entra al canal de soporte","cl.v14.3":"Embed con info del usuario, canal y marca de tiempo en el canal de logs","cl.v13.title":"Roles de Entrada & Mejoras","cl.v13.date":"Feb 2026","cl.v13.1":"/joinrole — Asignación automática de roles al unirse","cl.v13.2":"Soporte multilingüe mejorado (DE/EN/FR/ES)","cl.v13.3":"Sistema de tickets: bug de doble cierre corregido","cl.v13.4":"Notificaciones: soporte UC-ID de YouTube mejorado","cl.v12.title":"Roles de Reacción & Sistema de Solicitudes","cl.v12.date":"Ene 2026","cl.v12.1":"Roles de reacción con opción remove_role","cl.v12.2":"Sistema de solicitudes con múltiples apps & asignación de roles","cl.v12.3":"Comando /moderationlog","cl.v12.4":"Ban/Kick/Mute: notificación DM & respuestas efímeras","cl.v11.title":"Automod & Notificaciones","cl.v11.date":"Dic 2025","cl.v11.1":"Automod: palabras ofensivas, spam, enlaces de invitación, palabras personalizadas","cl.v11.2":"Notificaciones sociales: YouTube, Instagram, TikTok","cl.v11.3":"Mensajes de bienvenida con banner & colores personalizados","cl.v10.title":"Primera Versión 🎉","cl.v10.date":"Nov 2025","cl.v10.1":"Sistema de tickets con categorías & roles del staff","cl.v10.2":"Moderación: Ban, Kick, Mute","cl.v10.3":"Comandos Ping & Help",
     "footer.copy":"© 2026 OneBot — Hecho con ❤️ para Discord",
     "faq.items": [
       {q:"¿Es OneBot realmente gratis?", a:"¡Sí! OneBot es completamente gratuito y lo seguirá siendo. Todas las funciones están disponibles sin pago."},
@@ -796,6 +960,76 @@ function closeModal() {
 }
 
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+
+// ── DISCORD LOGIN ─────────────────────────────────────────────────────────────
+const DISCORD_CLIENT_ID = '1470444430589825197';
+const DISCORD_REDIRECT   = window.location.href.split('#')[0];
+
+function loginDiscord() {
+  const url = `https://discord.com/oauth2/authorize?client_id=${DISCORD_CLIENT_ID}&redirect_uri=${encodeURIComponent(DISCORD_REDIRECT)}&response_type=token&scope=identify`;
+  window.location.href = url;
+}
+
+function logoutDiscord() {
+  localStorage.removeItem('discord_token');
+  localStorage.removeItem('discord_user');
+  document.getElementById('nav-user').style.display = 'none';
+  document.getElementById('nav-login-btn').style.display = '';
+  window.history.replaceState({}, document.title, window.location.pathname);
+}
+
+async function fetchDiscordUser(token) {
+  try {
+    const res = await fetch('https://discord.com/api/users/@me', {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch { return null; }
+}
+
+function showDiscordUser(user) {
+  const avatar = user.avatar
+    ? `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=64`
+    : `https://cdn.discordapp.com/embed/avatars/${user.discriminator % 5}.png`;
+  document.getElementById('nav-avatar').src = avatar;
+  document.getElementById('nav-username').textContent = user.global_name || user.username;
+  document.getElementById('nav-user').style.display = 'flex';
+  document.getElementById('nav-login-btn').style.display = 'none';
+}
+
+async function initDiscordAuth() {
+  // Check for token in URL hash (redirect from Discord)
+  const hash = window.location.hash;
+  if (hash.includes('access_token')) {
+    const params = new URLSearchParams(hash.substring(1));
+    const token = params.get('access_token');
+    if (token) {
+      const user = await fetchDiscordUser(token);
+      if (user) {
+        localStorage.setItem('discord_token', token);
+        localStorage.setItem('discord_user', JSON.stringify(user));
+        showDiscordUser(user);
+        window.history.replaceState({}, document.title, window.location.pathname);
+        return;
+      }
+    }
+  }
+  // Check localStorage
+  const savedToken = localStorage.getItem('discord_token');
+  const savedUser  = localStorage.getItem('discord_user');
+  if (savedToken && savedUser) {
+    const user = JSON.parse(savedUser);
+    // Verify token still valid
+    const fresh = await fetchDiscordUser(savedToken);
+    if (fresh) { showDiscordUser(fresh); return; }
+    localStorage.removeItem('discord_token');
+    localStorage.removeItem('discord_user');
+  }
+}
+
+initDiscordAuth();
 
 </script>
 
